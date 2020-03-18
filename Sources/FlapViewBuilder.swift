@@ -68,6 +68,13 @@ public final class FlapViewBuilder {
    The default value of this property is nil.
    */
   public var font: UIFont?
+  
+  /**
+   The background image of the flap.
+
+   The default value of this property is nil.
+   */
+  public var image: UIImage?
 
   /**
    The technique to use for aligning the text.

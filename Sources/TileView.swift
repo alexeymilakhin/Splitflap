@@ -34,7 +34,8 @@ final class TileView: UIView {
   fileprivate let digitLabel        = UILabel()
   fileprivate let mainLineView      = UIView()
   fileprivate let secondaryLineView = UIView()
-
+  fileprivate let imageView         = UIImageView()
+  
   /// Defines the position and by the same time appearance of the tiles.
   enum Position {
     /// Tile positioned as a top leaf.
@@ -98,8 +99,10 @@ final class TileView: UIView {
     digitLabel.textAlignment   = builder.textAlignment
     digitLabel.textColor       = builder.textColor
     digitLabel.backgroundColor = builder.backgroundColor
-	flipPointHeightFactor 	   = builder.flipPointHeightFactor
-
+    flipPointHeightFactor 	   = builder.flipPointHeightFactor
+    imageView.image            = builder.image
+    
+    addSubview(imageView)
     addSubview(digitLabel)
     
     // Don't add the line if the color was set to nil
@@ -125,6 +128,8 @@ final class TileView: UIView {
     else {
       path = UIBezierPath(roundedRect:bounds, byRoundingCorners:[.bottomLeft, .bottomRight], cornerRadii: cornerRadii)
     }
+    
+    imageView.frame = bounds
 
     let maskLayer  = CAShapeLayer()
     maskLayer.path = path.cgPath
@@ -146,6 +151,7 @@ final class TileView: UIView {
       digitLabelFrame.origin.y    = -digitLabelFrame.height / 2
       mainLineViewFrame           = CGRect(x: 0, y: -2 * flipPointHeightFactor, width: bounds.width, height: 3 * flipPointHeightFactor)
       secondaryLineViewFrame      = CGRect(x: 0, y: -2 * flipPointHeightFactor, width: bounds.width, height: 2 * flipPointHeightFactor)
+      imageView.transform = .init(rotationAngle: .pi)
     }
 
     digitLabel.frame         = digitLabelFrame

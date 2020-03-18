@@ -74,6 +74,7 @@ func splitflap(_ splitflap: Splitflap, builderForFlapAtIndex index: Int) -> Flap
     builder.textAlignment   = .center
     builder.textColor       = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     builder.lineColor       = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+    builder.image           = UIImage(named: "image-name")
   }
 }
 
